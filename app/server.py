@@ -76,11 +76,11 @@ async def analyze(request):
     pred_4_prob = np.round(100*preds_sorted[3].item(),2)
     pred_5_prob = np.round(100*preds_sorted[4].item(),2)
     
-    preds_All = [f'{pred_1_class} ({pred_1_prob}%',
-                 f'{pred_2_class} ({pred_2_prob}%',
-                 f'{pred_3_class} ({pred_3_prob}%',
-                 f'{pred_4_class} ({pred_4_prob}%',
-                 f'{pred_5_class} ({pred_5_prob}%']
+    preds_All = [f'{pred_1_class} ({pred_1_prob}%)',
+                 f'{pred_2_class} ({pred_2_prob}%)',
+                 f'{pred_3_class} ({pred_3_prob}%)',
+                 f'{pred_4_class} ({pred_4_prob}%)',
+                 f'{pred_5_class} ({pred_5_prob}%)']
     
     return JSONResponse({'result': str(preds_All)})
     
