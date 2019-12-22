@@ -82,7 +82,7 @@ async def analyze(request):
                  f'{pred_4_class} ({pred_4_prob}%',
                  f'{pred_5_class} ({pred_5_prob}%']
     
-    return JSONResponse({'result': str(preds_All})
+    return JSONResponse({'result': str(preds_All)})
     
     #return JSONResponse({'result': str(prediction)})
 
