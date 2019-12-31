@@ -91,7 +91,7 @@ async def analyze(request):
                  f'{pred_3_class} ({pred_3_prob}%)',
                  f'{pred_4_class} ({pred_4_prob}%)',
                  f'{pred_5_class} ({pred_5_prob}%)',
-                 f'{pred_6_class} ({pred_6_prob}%),
+                 f'{pred_6_class} ({pred_6_prob}%)',
                  f'{pred_7_class} ({pred_7_prob}%)',
                  f'{pred_8_class} ({pred_8_prob}%)',
                  f'{pred_9_class} ({pred_9_prob}%)']
