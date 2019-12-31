@@ -9,9 +9,11 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 
-export_file_url = 'https://drive.google.com/uc?export=download&id=1-7G_CQ3pxpFp3QWpFCHWvFGant_zIu9v'
+export_file_url = 'https://drive.google.com/uc?export=download&id=1skUNYYIzJuR6QOhImtbXpgWlnj2Ip9Py'
 export_file_name = 'stage-2-rn50-5class.pkl'
-classes = ['female_breast', 'female_genital', 'male_genital', 'neutral', 'sex']
+classes = ['female_breast', 'female_genital', 'kiss', 
+           'male_genital', 'neutral', 'nude', 
+           'oral', 'risque','sex']
 
 path = Path(__file__).parent
 
@@ -69,18 +71,30 @@ async def analyze(request):
     pred_3_class = learn.data.classes[idxs[2]]
     pred_4_class = learn.data.classes[idxs[3]]
     pred_5_class = learn.data.classes[idxs[4]]
-    
+    pred_6_class = learn.data.classes[idxs[5]]
+    pred_7_class = learn.data.classes[idxs[6]]
+    pred_8_class = learn.data.classes[idxs[7]]
+    pred_9_class = learn.data.classes[idxs[8]]
+   
     pred_1_prob = np.round(100*preds_sorted[0].item(),2)
     pred_2_prob = np.round(100*preds_sorted[1].item(),2)
     pred_3_prob = np.round(100*preds_sorted[2].item(),2)
     pred_4_prob = np.round(100*preds_sorted[3].item(),2)
     pred_5_prob = np.round(100*preds_sorted[4].item(),2)
+    pred_6_prob = np.round(100*preds_sorted[5].item(),2)
+    pred_7_prob = np.round(100*preds_sorted[6].item(),2)
+    pred_8_prob = np.round(100*preds_sorted[7].item(),2)
+    pred_9_prob = np.round(100*preds_sorted[8].item(),2)
     
     preds_All = [f'{pred_1_class} ({pred_1_prob}%)',
                  f'{pred_2_class} ({pred_2_prob}%)',
                  f'{pred_3_class} ({pred_3_prob}%)',
                  f'{pred_4_class} ({pred_4_prob}%)',
-                 f'{pred_5_class} ({pred_5_prob}%)']
+                 f'{pred_5_class} ({pred_5_prob}%)',
+                 f'{pred_6_class} ({pred_6_prob}%),
+                 f'{pred_7_class} ({pred_7_prob}%)',
+                 f'{pred_8_class} ({pred_8_prob}%)',
+                 f'{pred_9_class} ({pred_9_prob}%)']
     
     return JSONResponse({'result': str(preds_All)})
     
